@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — QuitHabit Dark</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="progress.html">Progress</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#" id="logoutBtn" style="padding:6px 14px;border-radius:4px;font-family:var(--font-mono);font-size:0.75rem;color:var(--coral);border:1px solid rgba(255,77,109,0.25);">// logout</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main class="dashboard-page">
+  <div class="container">
+
+    <div class="dash-header reveal">
+      <div>
+        <h2>Hello, <span id="welcomeName">User</span> 👋</h2>
+        <p>System status: active. Keep the streak alive.</p>
+      </div>
+      <div>
+        <div class="dash-date" id="dashDate">// Loading...</div>
+        <div class="dash-mode" id="dataModeBadge" title="Local = PBKDF2 + browser storage; Cloud = Firebase">—</div>
+        <a href="progress.html" class="btn btn-ghost btn-sm" style="margin-top:8px;">View Full Progress →</a>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-main">
+
+        <section class="card">
+          <div class="widget-title">// habits — click to toggle active</div>
+          <div class="habits-row">
+            <div class="habit-card scrolling active" data-habit="scrolling" role="button" tabindex="0">
+              <div class="hc-check">[ ON ]</div>
+              <div class="hc-emoji">📵</div>
+              <div class="hc-name">Quit Scrolling</div>
+              <div class="hc-streak">🔥 5 day streak</div>
+            </div>
+            <div class="habit-card sugar" data-habit="sugar" role="button" tabindex="0">
+              <div class="hc-check">[ ON ]</div>
+              <div class="hc-emoji">🍬</div>
+              <div class="hc-name">Quit Sugar</div>
+              <div class="hc-streak">🔥 3 day streak</div>
+            </div>
+            <div class="habit-card smoking active" data-habit="smoking" role="button" tabindex="0">
+              <div class="hc-check">[ ON ]</div>
+              <div class="hc-emoji">🚭</div>
+              <div class="hc-name">Quit Smoking</div>
+              <div class="hc-streak">🔥 18 day streak</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="widget-title">// habit_progress.log</div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="pi-head"><span class="pi-label">📵 Quit Scrolling</span><span class="pi-pct">72%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-pct="72"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-head"><span class="pi-label">🍬 Quit Sugar</span><span class="pi-pct">45%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-coral" data-pct="45"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-head"><span class="pi-label">🚭 Quit Smoking</span><span class="pi-pct">91%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-cyan" data-pct="91"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="widget-title">// daily_checkin.sh</div>
+          <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-3);margin-bottom:14px;">$ select_habit && log_status</p>
+          <div class="habit-select-row">
+            <div class="habit-pill" data-habit="scrolling">📵 scrolling</div>
+            <div class="habit-pill" data-habit="sugar">🍬 sugar</div>
+            <div class="habit-pill" data-habit="smoking">🚭 smoking</div>
+          </div>
+          <div class="status-row">
+            <button type="button" class="status-btn" data-status="clean">✅ CLEAN_DAY</button>
+            <button type="button" class="status-btn" data-status="relapse">⚠️ RELAPSE</button>
+          </div>
+          <div class="form-group">
+            <label for="checkinNote">Note (optional)</label>
+            <input type="text" id="checkinNote" placeholder="e.g. Triggered by stress, used breathing..."/>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" id="checkinSubmit">⚡ Save Check-in</button>
+        </section>
+
+      </div>
+
+      <div class="dash-side">
+
+        <section class="card streak-widget">
+          <div class="widget-title">// avg_streak</div>
+          <div class="streak-ring">
+            <div class="streak-num" id="streakNum">9<small>avg days</small></div>
+          </div>
+          <p>Across active habits.<br><strong id="bestStreakLabel">Best: — days 🏆</strong></p>
+        </section>
+
+        <section class="card quote-widget">
+          <div class="widget-title">// quote_of_day</div>
+          <div class="quote-icon">💬</div>
+          <div class="quote-text" id="quoteText">"Small daily improvements are the key to staggering long-term results."</div>
+          <div class="quote-author" id="quoteAuthor">— Robin Sharma</div>
+          <div class="quote-refresh" id="refreshQuote" role="button" tabindex="0">$ new_quote()</div>
+        </section>
+
+        <section class="card">
+          <div class="widget-title">// recent_activity.log</div>
+          <div class="log-list" id="logList">
+            <div class="log-item">
+              <div class="log-dot ld-clean"></div>
+              <div class="log-info"><div class="log-habit">Scrolling</div><div class="log-time">Loading...</div></div>
+              <span class="log-status ls-clean">[ OK ]</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a><p>Break unhealthy habits one disciplined day at a time.</p></div>
+      <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="progress.html">Progress</a><a href="about.html">About</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 QuitHabit Dark</span><span>Made with <span class="accent">// love</span></span>
+    </div>
+  </div>
+</footer>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

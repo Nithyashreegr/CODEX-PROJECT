@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — QuitHabit Dark</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="progress.html">Progress</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="auth-page">
+  <div class="auth-grid-bg" aria-hidden="true"></div>
+  <div class="auth-container">
+    <div class="auth-left reveal-left">
+      <h1>Access the<br><span class="glow-text">System.</span></h1>
+      <p>Create an account and start breaking the habits that have been running your life.</p>
+      <div class="auth-perks stagger">
+        <div class="perk"><div class="perk-icon">📊</div><span>Visual streaks and progress charts</span></div>
+        <div class="perk"><div class="perk-icon">🏅</div><span>Earn achievement badges at milestones</span></div>
+        <div class="perk"><div class="perk-icon">🔒</div><span>Firebase cloud or PBKDF2-secured local login — your choice</span></div>
+        <div class="perk"><div class="perk-icon">💬</div><span>Daily motivational quotes refreshed each session</span></div>
+        <div class="perk"><div class="perk-icon">🆓</div><span>Completely free — forever</span></div>
+      </div>
+    </div>
+
+    <div class="auth-card reveal-right">
+      <div class="auth-tabs" role="tablist">
+        <div class="auth-tab active" data-tab="signup" role="tab" tabindex="0">// Register</div>
+        <div class="auth-tab" data-tab="login" role="tab" tabindex="0">// Login</div>
+      </div>
+
+      <form class="auth-form active" id="signupForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="regName">Full Name</label>
+            <input type="text" id="regName" placeholder="Arjun Kumar" autocomplete="name"/>
+            <div class="error-msg" id="regNameErr"></div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="you@email.com" autocomplete="email"/>
+            <div class="error-msg" id="regEmailErr"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="regPass">Password</label>
+            <input type="password" id="regPass" placeholder="••••••••" autocomplete="new-password"/>
+            <div class="error-msg" id="regPassErr"></div>
+          </div>
+          <div class="form-group">
+            <label for="regConf">Confirm</label>
+            <input type="password" id="regConf" placeholder="••••••••" autocomplete="new-password"/>
+            <div class="error-msg" id="regConfErr"></div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">⚡ Create Account</button>
+        <div class="success-toast" id="signupToast"></div>
+      </form>
+
+      <form class="auth-form" id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="you@email.com" autocomplete="email"/>
+          <div class="error-msg" id="loginEmailErr"></div>
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"/>
+          <div class="error-msg" id="loginPassErr"></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">⚡ Sign In</button>
+        <div class="success-toast" id="loginToast"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a><p>Break unhealthy habits one disciplined day at a time.</p></div>
+      <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="dashboard.html">Dashboard</a><a href="progress.html">Progress</a><a href="about.html">About</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 QuitHabit Dark</span><span>Made with <span class="accent">// love</span></span>
+    </div>
+  </div>
+</footer>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

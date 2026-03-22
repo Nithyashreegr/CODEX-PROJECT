@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Progress — QuitHabit Dark</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="progress.html" class="active">Progress</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#" id="logoutBtn" style="padding:6px 14px;border-radius:4px;font-family:var(--font-mono);font-size:0.75rem;color:var(--coral);border:1px solid rgba(255,77,109,0.25);">// logout</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main class="progress-page">
+  <div class="container">
+
+    <div class="progress-page-header reveal">
+      <h1>Progress <span class="glow-text">Analytics</span></h1>
+      <p>Your full history — streaks, relapses, milestones, and achievements.</p>
+      <div class="prog-toolbar">
+        <span class="dash-mode" id="dataModeBadge">—</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="exportHistoryBtn">Export CSV</button>
+        <label class="relapse-filter-label">
+          Relapse filter
+          <select id="relapseFilter" class="relapse-filter-select">
+            <option value="all">all habits</option>
+            <option value="scrolling">scrolling</option>
+            <option value="sugar">sugar</option>
+            <option value="smoking">smoking</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="prog-kpis stagger">
+      <div class="kpi-card">
+        <div class="kpi-icon">🔥</div>
+        <div class="kpi-num" id="kpiDays">0</div>
+        <div class="kpi-label">Total Streak Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">✅</div>
+        <div class="kpi-num" id="kpiClean">0</div>
+        <div class="kpi-label">Clean Days Logged</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">⚠️</div>
+        <div class="kpi-num" id="kpiRelapses">0</div>
+        <div class="kpi-label">Relapses Logged</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🏆</div>
+        <div class="kpi-num" id="kpiBest">0</div>
+        <div class="kpi-label">Best Streak (days)</div>
+      </div>
+    </div>
+
+    <div class="prog-grid">
+      <div class="prog-main">
+
+        <section class="card reveal">
+          <div class="widget-title">// analytics_charts.js — Chart.js (stacked activity + relapse trend)</div>
+          <div id="weekChart">
+            <p style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-3)">// Loading chart data...</p>
+          </div>
+        </section>
+
+        <section class="card reveal">
+          <div class="widget-title">// current_progress.log</div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="pi-head"><span class="pi-label">📵 Quit Scrolling</span><span class="pi-pct">72%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-pct="72"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-head"><span class="pi-label">🍬 Quit Sugar</span><span class="pi-pct">45%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-coral" data-pct="45"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="pi-head"><span class="pi-label">🚭 Quit Smoking</span><span class="pi-pct">91%</span></div>
+              <div class="progress-track"><div class="progress-fill pf-cyan" data-pct="91"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card reveal">
+          <div class="widget-title">// checkin_history.db — last 50 entries</div>
+          <div style="overflow-x:auto;">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Date</th><th>Habit</th><th>Status</th><th>Note</th>
+                </tr>
+              </thead>
+              <tbody id="historyBody">
+                <tr><td colspan="4" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-3);text-align:center;padding:20px;">// Loading history...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="prog-side">
+
+        <section class="card quote-widget">
+          <div class="widget-title">// daily_quote</div>
+          <div class="quote-icon">💬</div>
+          <div class="quote-text" id="quoteText">"Discipline is the bridge between goals and accomplishment."</div>
+          <div class="quote-author" id="quoteAuthor">— Jim Rohn</div>
+          <div class="quote-refresh" id="refreshQuote" role="button" tabindex="0">$ new_quote()</div>
+        </section>
+
+        <section class="card">
+          <div class="widget-title">// achievements.json</div>
+          <div class="achievements-grid" id="achievementsList">
+            <div class="achievement locked"><div class="ach-icon">🌱</div><div><div class="ach-name">First Step ⋯</div><div class="ach-desc">Log first clean day</div></div></div>
+            <div class="achievement locked"><div class="ach-icon">⚔️</div><div><div class="ach-name">Week Warrior ⋯</div><div class="ach-desc">7-day streak</div></div></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="widget-title">// relapse_log.err</div>
+          <div class="relapse-list" id="relapseList">
+            <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-3)">// Loading...</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a><p>Break unhealthy habits one disciplined day at a time.</p></div>
+      <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="dashboard.html">Dashboard</a><a href="about.html">About</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 QuitHabit Dark</span><span>Made with <span class="accent">// love</span></span>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

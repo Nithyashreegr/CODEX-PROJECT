@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuitHabit — Break Free, Live Well</title>
+  <meta name="description" content="QuitHabit Dark — a digital wellness platform to quit scrolling, sugar, and smoking."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-mark">⚡</div>
+      QuitHabit
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="progress.html">Progress</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html" class="nav-cta">Launch App</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="hero-orb orb-1" aria-hidden="true"></div>
+  <div class="hero-orb orb-2" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="cmd-prefix">$ </span>
+        <span class="cmd-text" data-text="run quit-habit --mode=wellness">run quit-habit --mode=wellness</span>
+        <span class="badge-blink"></span>
+      </div>
+      <h1 class="hero-title">
+        Break Free.<br>
+        <em>Live Intentionally.</em>
+      </h1>
+      <p class="hero-desc">
+        QuitHabit is a dark-mode wellness platform that helps you eliminate scrolling addiction, sugar cravings, and smoking — through disciplined daily tracking and streak systems.
+      </p>
+      <div class="hero-actions">
+        <a href="login.html" class="btn btn-primary btn-lg">⚡ Start Now</a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg">How It Works</a>
+      </div>
+      <div class="hero-stats stagger">
+        <div class="stat">
+          <span class="stat-num" data-target="12400" data-suffix="+">0+</span>
+          <span class="stat-label">Active Users</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="89" data-suffix="%">0%</span>
+          <span class="stat-label">Success Rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Habits Tracked</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="30" data-suffix="d">0d</span>
+          <span class="stat-label">Avg. Streak</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="terminal-card tc-1">
+        <div class="tc-bar">
+          <span class="tc-dot tc-dot-r"></span>
+          <span class="tc-dot tc-dot-y"></span>
+          <span class="tc-dot tc-dot-g"></span>
+          <span class="tc-title">habit_tracker.sh</span>
+        </div>
+        <div class="tc-body">
+          <div><span class="tc-dim">$</span> <span class="tc-neon">status --scrolling</span></div>
+          <div class="tc-cyan">→ streak: 5 days</div>
+          <div class="tc-neon">→ progress: 72%</div>
+          <div class="tc-dim">→ status: CLEAN ✓</div>
+        </div>
+      </div>
+      <div class="terminal-card tc-2">
+        <div class="tc-bar">
+          <span class="tc-dot tc-dot-r"></span>
+          <span class="tc-dot tc-dot-y"></span>
+          <span class="tc-dot tc-dot-g"></span>
+          <span class="tc-title">motivate.js</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-dim">// Today's quote</div>
+          <div class="tc-neon">"Small steps, big</div>
+          <div class="tc-neon"> results."</div>
+          <div class="tc-amber">— Robin Sharma</div>
+        </div>
+      </div>
+      <div class="terminal-card tc-3">
+        <div class="tc-bar">
+          <span class="tc-dot tc-dot-r"></span>
+          <span class="tc-dot tc-dot-y"></span>
+          <span class="tc-dot tc-dot-g"></span>
+          <span class="tc-title">achievements.json</span>
+        </div>
+        <div class="tc-body">
+          <div class="tc-dim">badges: [</div>
+          <div>&nbsp;&nbsp;<span class="tc-neon">"First Step"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="tc-cyan">"Week Warrior"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="tc-amber">"Smoke Free"</span></div>
+          <div class="tc-dim">]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Process</div>
+      <h2>How QuitHabit Works</h2>
+      <p>Three disciplined steps to breaking habits that have been holding you back.</p>
+    </div>
+    <div class="steps-grid">
+      <article class="step-card reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">🎯</div>
+        <h3>Choose Your Habit</h3>
+        <p>Select from scrolling addiction, sugar cravings, or smoking — or track all three simultaneously.</p>
+      </article>
+      <article class="step-card reveal">
+        <div class="step-num">02</div>
+        <div class="step-icon">📋</div>
+        <h3>Log Daily Check-ins</h3>
+        <p>Each day, record your status honestly. Clean days build streaks. Relapses are logged without judgment.</p>
+      </article>
+      <article class="step-card reveal">
+        <div class="step-num">03</div>
+        <div class="step-icon">📈</div>
+        <h3>Track Your Growth</h3>
+        <p>View weekly charts, earn achievement badges, and watch your streaks compound into lasting freedom.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Features</div>
+      <h2>Built for Real Change</h2>
+      <p>Every feature is grounded in behavioural psychology and designed to outlast motivation.</p>
+    </div>
+    <div class="features-grid stagger">
+      <article class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3>Visual Progress Charts</h3>
+        <p>Real-time bars and weekly graphs showing exactly where you stand across each habit.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">🔥</span>
+        <h3>Streak Counter System</h3>
+        <p>Build daily streaks. Every clean day strengthens the chain — and makes you think twice about breaking it.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">🏅</span>
+        <h3>Achievement Badges</h3>
+        <p>Unlock milestone badges from First Day to Month Master. Real accomplishments deserve real recognition.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="cta-glow-bg" aria-hidden="true"></div>
+      <h2>Ready to <span class="glow-text">Reclaim Your Life?</span></h2>
+      <p>Start tracking with clarity. Your data stays in your browser — private by design.</p>
+      <div class="cta-actions">
+        <a href="login.html" class="btn btn-primary btn-lg">⚡ Start Now</a>
+        <a href="about.html" class="btn btn-outline btn-lg">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a><p>Break unhealthy habits one disciplined day at a time.</p></div>
+      <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="login.html">Sign Up / Login</a><a href="dashboard.html">Dashboard</a><a href="progress.html">Progress</a><a href="about.html">About</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 QuitHabit Dark Edition</span>
+      <span>Made with <span class="accent">// love</span> — College Project, Bengaluru</span>
+    </div>
+  </div>
+</footer>
+<script src="app-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

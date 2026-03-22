@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — QuitHabit Dark</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="progress.html">Progress</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="login.html" class="nav-cta">Launch App</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main class="about-page">
+  <div class="container">
+
+    <div class="about-hero reveal">
+      <div class="section-tag">About the Project</div>
+      <h1>Built to Help You<br><span class="glow-text">Break Free.</span></h1>
+      <p>QuitHabit is a college software engineering project — a fully functional wellness platform to tackle three of the most common modern-day habit struggles.</p>
+    </div>
+
+    <div class="about-mission">
+      <div class="mission-visual reveal-left">🎯</div>
+      <div class="mission-text reveal-right">
+        <div class="section-tag">Mission</div>
+        <h2>Why We Built This</h2>
+        <p>The average person spends over 6 hours a day on screens, consumes 20 teaspoons of added sugar, and struggles with habits they know they want to break but can't seem to.</p>
+        <p>QuitHabit was created to provide a simple, private, and honest tool for habit tracking — without subscriptions, ads, or social pressure. Just you and your data.</p>
+        <p>Built as a Vanilla HTML/CSS/JavaScript project, everything runs in your browser. Your data never leaves your device.</p>
+        <a href="login.html" class="btn btn-primary" style="margin-top:20px;">⚡ Get Started Free</a>
+      </div>
+    </div>
+
+    <section class="benefits-section">
+      <div class="section-header reveal">
+        <div class="section-tag">Why QuitHabit</div>
+        <h2>What Makes It Different</h2>
+      </div>
+      <div class="benefits-grid stagger">
+        <div class="benefit-item">
+          <div class="benefit-icon">🔒</div>
+          <div><h4>100% Private by Design</h4><p>All data is stored in your browser's localStorage. No servers, no cloud accounts, no tracking cookies.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🚀</div>
+          <div><h4>Zero Dependencies</h4><p>Pure Vanilla HTML, CSS, and JavaScript. No frameworks, no libraries, no npm install required.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📊</div>
+          <div><h4>Honest Analytics</h4><p>See your streaks, relapses, and patterns without sugar-coating. Honest data drives real change.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🏅</div>
+          <div><h4>Achievement System</h4><p>Milestone badges from day 1 to month 1 — built on behavioural science to reinforce consistency.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📱</div>
+          <div><h4>Fully Responsive</h4><p>Works seamlessly on mobile, tablet, and desktop. Open it in any browser, no install needed.</p></div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🆓</div>
+          <div><h4>Permanently Free</h4><p>No premium tier, no paywalls, no ads. QuitHabit is a passion project built for impact, not profit.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-brand"><div class="brand-mark">⚡</div>QuitHabit</a><p>Break unhealthy habits one disciplined day at a time.</p></div>
+      <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="login.html">Sign Up / Login</a><a href="dashboard.html">Dashboard</a><a href="progress.html">Progress</a><a href="about.html">About</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 QuitHabit Dark Edition</span>
+    </div>
+  </div>
+</footer>
+<script src="app-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
